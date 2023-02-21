@@ -1,11 +1,15 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import suport.Utils;
 
 public class CadastroPage extends Utils {
     WebDriver driver;
+
+    String name = "Charles";
+    String firstName = "Silva";
 
     private By registerName = By.cssSelector("[id=\"Name\"]");
     private By companyName = By.cssSelector("[id=\"Company\"]");
@@ -35,6 +39,7 @@ public class CadastroPage extends Utils {
         driver.findElement(searchName).sendKeys("Charles Silva");
         driver.findElement(searchBtn).click();
         waitElementBePresent(doingResearch, 20);
-        driver.findElement(doingResearch).equals("Charles Silva");
+        String resultVerify = driver.findElement(doingResearch).getText();
+        Assert.assertEquals(name + " " + firstName, resultVerify);
     }
 }

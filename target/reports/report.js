@@ -61,35 +61,35 @@ formatter.match({
   "location": "userSteps.tela_home_site()"
 });
 formatter.result({
-  "duration": 4398948500,
+  "duration": 4104139600,
   "status": "passed"
 });
 formatter.match({
   "location": "userSteps.inserindo_credencial()"
 });
 formatter.result({
-  "duration": 12704792000,
+  "duration": 11386337400,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.preencho_formulario_de_cadastro()"
 });
 formatter.result({
-  "duration": 931994300,
+  "duration": 1031325800,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.seleciono_registrar()"
 });
 formatter.result({
-  "duration": 3393163100,
+  "duration": 2913310900,
   "status": "passed"
 });
 formatter.match({
   "location": "CadastroSteps.pesquisando_para_verificação()"
 });
 formatter.result({
-  "duration": 929948800,
+  "duration": 886447600,
   "status": "passed"
 });
 });
