@@ -14,12 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
             tags = {"~@ignore"},
             glue = {"steps"}
     )
-    public class RunCucumberTest {
-        public static WebDriver driver;
-        @BeforeClass
-        public static void start(){
-            driver = new ChromeDriver();
-        }
+    public class RunCucumberTest extends RunBase {
         @AfterClass
         public static void stop(){
             driver.quit();

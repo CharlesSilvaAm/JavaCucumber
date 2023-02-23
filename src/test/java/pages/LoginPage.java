@@ -2,10 +2,10 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import runner.RunBase;
+import runner.RunCucumberTest;
 import suport.Utils;
-
-public class LoginPage extends Utils {
-    WebDriver driver;
+public class LoginPage extends RunCucumberTest {
     private By homeScreen = By.cssSelector(".img-fluid.img-thumbnail + h1");
     private By loginLink = By.cssSelector("[href=\"/Login\"]");
     private By userName = By.id("Username");
@@ -17,26 +17,21 @@ public class LoginPage extends Utils {
     private By searchBtn = By.cssSelector("[value=\"Search\"]");
     private By deleteUser = By.cssSelector("[class=\"btn btn-outline-danger\"]");
     private By deleteDefinitive = By.cssSelector("[class=\"btn btn-outline-danger\"]");
-
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
+    public void accessHomeScreen() throws IllegalAccessException {
+        getDriver().get("https://itera-qa.azurewebsites.net/home");
+        Utils.waitElementBePresent(homeScreen, 20);
     }
-    public void accessHomeScreen(){
-        driver.get("https://itera-qa.azurewebsites.net/home");
-        waitElementBePresent(homeScreen, 20);
+    public void loginMainScreen() throws IllegalAccessException {
+        getDriver().findElement(loginLink).click();
+        getDriver().findElement(userName).sendKeys("CharlesSilva");
+        getDriver().findElement(password).sendKeys("12345");
+        getDriver().findElement(btnLogin).click();
+        Utils.waitElementBePresent(mainHome, 10);
+        Utils.waitElementBePresent(searchName, 10);
+        getDriver().findElement(searchName).sendKeys("Charles Silva");
+        getDriver().findElement(searchBtn).click();
+        getDriver().findElement(deleteUser).click();
+        getDriver().findElement(deleteDefinitive).click();
+        getDriver().findElement(btnNewCreate).click();
     }
-    public void loginMainScreen(){
-        driver.findElement(loginLink).click();
-        driver.findElement(userName).sendKeys("CharlesSilva");
-        driver.findElement(password).sendKeys("12345");
-        driver.findElement(btnLogin).click();
-        waitElementBePresent(mainHome, 10);
-        waitElementBePresent(searchName, 10);
-        driver.findElement(searchName).sendKeys("Charles Silva");
-        driver.findElement(searchBtn).click();
-        driver.findElement(deleteUser).click();
-        driver.findElement(deleteDefinitive).click();
-        driver.findElement(btnNewCreate).click();
-    }
-
 }

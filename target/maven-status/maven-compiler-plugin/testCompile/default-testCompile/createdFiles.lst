@@ -1,0 +1,5 @@
+steps\CadastroUpSteps.class
+runner\RunBase.class
+pages\CadastroRunPage.class
+runner\RunBase$Browser.class
+runner\RunBase$1.class

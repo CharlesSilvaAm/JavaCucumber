@@ -3,11 +3,10 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import runner.RunCucumberTest;
 import suport.Utils;
 
-public class CadastroPage extends Utils {
-    WebDriver driver;
-
+public class CadastroPage extends RunCucumberTest {
     String name = "Charles";
     String firstName = "Silva";
 
@@ -21,25 +20,22 @@ public class CadastroPage extends Utils {
     private By searchName = By.cssSelector("[name=\"searching\"]");
     private By searchBtn = By.cssSelector("[value=\"Search\"]");
     private By doingResearch = By.cssSelector("td:nth-child(1)");
-    public CadastroPage(WebDriver driver){
-        this.driver = driver;
+    public void createCustumer() throws IllegalAccessException {
+        getDriver().findElement(registerName).sendKeys("Charles Silva");
+        getDriver().findElement(companyName).sendKeys("QaCompany Technology");
+        getDriver().findElement(addressCompany).sendKeys("rua piragodê");
+        getDriver().findElement(companyCity).sendKeys("Manaus-Am");
+        getDriver().findElement(companyPhone).sendKeys("9999999999");
+        getDriver().findElement(companyEmail).sendKeys(Utils.getRandomEmail());
     }
-    public void createCustumer(){
-        driver.findElement(registerName).sendKeys("Charles Silva");
-        driver.findElement(companyName).sendKeys("QaCompany Technology");
-        driver.findElement(addressCompany).sendKeys("rua piragodê");
-        driver.findElement(companyCity).sendKeys("Manaus-Am");
-        driver.findElement(companyPhone).sendKeys("9999999999");
-        driver.findElement(companyEmail).sendKeys(getRandomEmail());
+    public void createCompany() throws IllegalAccessException {
+        getDriver().findElement(btnCreate).click();
     }
-    public void createCompany(){
-        driver.findElement(btnCreate).click();
-    }
-    public void verifyDashboard(){
-        driver.findElement(searchName).sendKeys("Charles Silva");
-        driver.findElement(searchBtn).click();
-        waitElementBePresent(doingResearch, 20);
-        String resultVerify = driver.findElement(doingResearch).getText();
+    public void verifyDashboard() throws IllegalAccessException {
+        getDriver().findElement(searchName).sendKeys("Charles Silva");
+        getDriver().findElement(searchBtn).click();
+        Utils.waitElementBePresent(doingResearch, 20);
+        String resultVerify = getDriver().findElement(doingResearch).getText();
         Assert.assertEquals(name + " " + firstName, resultVerify);
     }
 }
